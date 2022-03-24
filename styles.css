@@ -1,0 +1,22 @@
+html {
+    --first-color: lightgrey;
+    --secound-color: black;
+    --box-color: white;
+    --first-text-color: black;
+    --secound-text-color: white;
+    --font: helvetica;
+}
+
+body {
+    background-color: var(--first-color);
+    font-family: var(--font);
+}
+#results {
+    display: flex;
+    flex-direction: column;
+    background-color: var(--box-color);
+    width: 500px;
+    height: 150px;
+    border-radius: 5px;
+    box-shadow: 2px 2px 2px 2px;
+}
