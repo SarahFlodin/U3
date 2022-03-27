@@ -35,6 +35,12 @@ function totalCredits(student) {
     }
     return creditTotal;
 }
+function viewCourses(students)
+    let studentsElement = document.getElementById("students");
+    for (let student of students) {
+        let studentElement = viewStudent(student.studentID);
+        studentElement.appendChild(studentElement);
+    }
 
 function viewCourses(student){
     let courseInfo = DATABASE.courses;
@@ -47,28 +53,30 @@ function viewCourses(student){
     let courseForm = [];
     for (let i = 0; i < courses.length; i++) {
         let div = document.createElement("div");
-    }
 
-    if (student.courses[i].passesCredits == courseInfo[courses[i].courseId].totalCredits){
-        let info = div.innerHTML = `
-            <div class="done"> 
-            <h3>${courses[i].title}</h3>
-            <p>${student.courses[i].started.semester}
-            ${student.courses[i].started.year}
-            (${student.courses[i].passesCredits} of 
-            ${courseInfo[courses[i].courseId].totalCredits} credits)</p>
-            </div>`
-            courseForm.push(info); 
-        } else {
+        if (student.courses[i].passesCredits == courseInfo[courses[i].courseId].totalCredits){
             let info = div.innerHTML = `
-            <div class="notDone">
-            <h3> ${courses[i].title} </h3>
-            <p>${student.courses[i].started.semester}
-        ${student.courses[i].started.year}
-        (${student.courses[i].passedCredits} of ${courseInfo[courses[i].courseId].totalCredits} credits)
-        <p/>
-        </div>`
-
-        courseForm.push(info);
+                <div class="done"> 
+                <h3>${courses[i].title}</h3>
+                <p>${student.courses[i].started.semester}
+                ${student.courses[i].started.year}
+                (${student.courses[i].passesCredits} of 
+                ${courseInfo[courses[i].courseId].totalCredits} credits)</p>
+                </div>`
+                courseForm.push(info); 
+            } else {
+                let info = div.innerHTML = `
+                <div class="notDone">
+                <h3> ${courses[i].title} </h3>
+                <p>${student.courses[i].started.semester}
+            ${student.courses[i].started.year}
+            (${student.courses[i].passedCredits} of ${courseInfo[courses[i].courseId].totalCredits} credits)
+            <p/>
+            </div>`
+        
+            courseForm.push(info);
+        }
     }
+    return courseForm.toString().split(",").join("");
 }
+viewStudents(DATABASE.students);
