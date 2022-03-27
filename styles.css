@@ -43,6 +43,9 @@ h3{
     margin: 3px;
     padding: 2px;
     background-color: green;
+    display: flex;
+    flex-shrink: 1;
+
 }
 
 .notDone {
@@ -50,4 +53,11 @@ h3{
     padding: 2px;
     margin: 3px;
     opacity: 40%;
+    display: flex;
+    flex-shrink: 1;
 }
+
+.dark-mode {
+    background-color: black;
+    color: white;
+  }

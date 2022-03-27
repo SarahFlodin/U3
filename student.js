@@ -49,7 +49,7 @@ function viewStudents(students){
 function viewCourses(student){
     let courseInfo = DATABASE.courses;
     let courses = [];
-    for (let i = 0; i < student.length; i++) {
+    for (let i = 0; i < student.courses.length; i++) {
         let id = student.courses[i].courseId;
         courses.push(courseInfo[id]);
     }
@@ -58,7 +58,7 @@ function viewCourses(student){
     for (let i = 0; i < courses.length; i++) {
         let div = document.createElement("div");
 
-        if (student.courses[i].passesCredits == courseInfo[courses[i].courseId].totalCredits){
+        if (student.courses[i].passedCredits == courseInfo[courses[i].courseId].totalCredits){
             let info = div.innerHTML = `
                 <div class="done"> 
                 <h3>${courses[i].title}</h3>
@@ -83,4 +83,10 @@ function viewCourses(student){
     }
     return courseForm.toString().split(",").join("");
 }
+
 viewStudents(DATABASE.students);
+
+function myFunction() {
+    var element = document.body;
+    element.classList.toggle("dark-mode");
+  } 
