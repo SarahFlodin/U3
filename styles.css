@@ -10,13 +10,23 @@ html {
 body {
     background-color: var(--first-color);
     font-family: var(--font);
+    margin: 20px;
+    font-size: 15px;
 }
+
 #results {
-    display: flex;
-    flex-direction: column;
+    margin-top: 15px;
+    padding: 10px;
     background-color: var(--box-color);
-    width: 500px;
-    height: 150px;
-    border-radius: 5px;
-    box-shadow: 2px 2px 2px 2px;
+    border-bottom: solid 1px black;
+}
+
+header{
+    font-size: 20px;
+    font-style: italic;
+    font-weight: bold;
+}
+
+h3{
+    font-size: 16px;
 }

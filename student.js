@@ -35,3 +35,40 @@ function totalCredits(student) {
     }
     return creditTotal;
 }
+
+function viewCourses(student){
+    let courseInfo = DATABASE.courses;
+    let courses = [];
+    for (let i = 0; i < student.length; i++) {
+        let id = student.courses[i].courseId;
+        courses.push(courseInfo[id]);
+    }
+
+    let courseForm = [];
+    for (let i = 0; i < courses.length; i++) {
+        let div = document.createElement("div");
+    }
+
+    if (student.courses[i].passesCredits == courseInfo[courses[i].courseId].totalCredits){
+        let info = div.innerHTML = `
+            <div class="done"> 
+            <h3>${courses[i].title}</h3>
+            <p>${student.courses[i].started.semester}
+            ${student.courses[i].started.year}
+            (${student.courses[i].passesCredits} of 
+            ${courseInfo[courses[i].courseId].totalCredits} credits)</p>
+            </div>`
+            courseForm.push(info); 
+        } else {
+            let info = div.innerHTML = `
+            <div class="notDone">
+            <h3> ${courses[i].title} </h3>
+            <p>${student.courses[i].started.semester}
+        ${student.courses[i].started.year}
+        (${student.courses[i].passedCredits} of ${courseInfo[courses[i].courseId].totalCredits} credits)
+        <p/>
+        </div>`
+
+        courseForm.push(info);
+    }
+}
