@@ -1,9 +1,7 @@
 html {
     --first-color: lightgrey;
-    --secound-color: black;
-    --box-color: white;
-    --first-text-color: black;
-    --secound-text-color: white;
+    --lightcolor: white;
+    --darkcolor: black;
     --font: helvetica;
 }
 
@@ -24,8 +22,9 @@ form,h1 {
 #course {
     margin: 15px 0px 15px 0px;
     padding: 20px;
-    background-color: var(--box-color);
-    border-bottom: solid 1px black;
+    background-color: var(--lightcolor);
+    border: solid 1px black;
+    border-radius: 10px;
 }
 
 header{
@@ -57,7 +56,22 @@ h3{
     flex-shrink: 1;
 }
 
-.dark-mode {
-    background-color: black;
-    color: white;
-  }
+.darkMode {
+    background-color: var(--darkcolor);
+    color: var(--lightcolor);
+    
+}
+.darkMode #courses {
+    background-color: var(--darkcolor); 
+}
+
+.darkMode #course {
+    background-color: var(--darkcolor); 
+    border:solid 1px var(--lightcolor);
+}
+.darkMode .done {
+    border:solid 1px var(--lightcolor);
+}
+.darkMode .notDone {
+    border:solid 1px var(--lightcolor);
+}
