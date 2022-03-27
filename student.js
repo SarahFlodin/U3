@@ -2,7 +2,7 @@
 //Skapar en global variebel för databasen
 let students = DATABASE.students;
 
-function viewStrudent(id) {
+function viewStudent(id) {
     //Skapar en funktion för att skapa en div med en classen container
     let div = document.createElement("div");
     let student = DATABASE.students[id];
@@ -13,11 +13,12 @@ function viewStrudent(id) {
     <div>
         <div id = "course">
             <h4>Courses:</h4>
-            <div id= "courses">
+            <div id="courses">
                 ${viewCourses(student)}
                 </div>
             </div>
         </div>`
+
     //returnerar den nya diven
     return div;
 }
@@ -33,14 +34,17 @@ function totalCredits(student) {
     for (let i = 0; i < credits.length; i++) {
         creditTotal += credits[i];
     }
+
     return creditTotal;
 }
-function viewCourses(students)
+
+function viewStudents(students){
     let studentsElement = document.getElementById("students");
     for (let student of students) {
         let studentElement = viewStudent(student.studentID);
-        studentElement.appendChild(studentElement);
+        studentsElement.appendChild(studentElement);
     }
+}
 
 function viewCourses(student){
     let courseInfo = DATABASE.courses;
@@ -70,9 +74,9 @@ function viewCourses(student){
                 <h3> ${courses[i].title} </h3>
                 <p>${student.courses[i].started.semester}
             ${student.courses[i].started.year}
-            (${student.courses[i].passedCredits} of ${courseInfo[courses[i].courseId].totalCredits} credits)
-            <p/>
-            </div>`
+            (${student.courses[i].passedCredits} of 
+            ${courseInfo[courses[i].courseId].totalCredits} credits)</p>
+                </div>`
         
             courseForm.push(info);
         }
