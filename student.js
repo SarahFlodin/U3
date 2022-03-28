@@ -84,6 +84,27 @@ function viewCourses(student){
     return courseForm.toString().split(",").join(" ");
 }
 
+function searchByLastname() {
+    return input.value.toLowerCase();
+}
+
+let input = document.getElementById("search-student");
+input.addEventListener("keyup",studentsLastname);
+
+function studentsLastname (){
+    let studentsArray = [];
+    for (let i = 0; i < students.length; i++) {
+         document.getElementById("students").innerHTML = "";
+         if( "" == searchByLastname()){
+             document.getElementById("students").innerHTML = "";
+         }  else if (students[i].lastName.toLowerCase().includes(searchByLastname())) {
+             studentsArray.push(students[i]);
+         }
+        
+    }
+    viewStudents(studentsArray)
+}
+
 viewStudents(DATABASE.students);
 
 function darkMode() {
