@@ -81,7 +81,7 @@ function viewCourses(student){
             courseForm.push(info);
         }
     }
-    return courseForm.toString().split(",").join("");
+    return courseForm.toString().split(",").join(" ");
 }
 
 viewStudents(DATABASE.students);
@@ -89,4 +89,5 @@ viewStudents(DATABASE.students);
 function darkMode() {
     var element = document.body;
     element.classList.toggle("darkMode");
-  } 
+window.localStorage.setItem(darkMode, onclick)
+}   
