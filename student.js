@@ -107,8 +107,32 @@ function studentsLastname (){
 
 viewStudents(DATABASE.students);
 
+
+function checkDarkMode () {
+    const darkMode = localStorage.getItem("darkMode");
+    if (darkMode == null) {
+    localStorage.setItem("darkMode", JSON.stringify(false));
+ }
+    let element = document.body;
+
+    if (JSON.parse(darkMode)== true) {
+        element.classList.add("darkMode")
+    } else {
+        element.classList.remove("darkMode");
+    }
+}
+
 function darkMode() {
-    var element = document.body;
+    let element = document.body;
+    const darkMode = localStorage.getItem("darkMode")
     element.classList.toggle("darkMode");
-window.localStorage.setItem(darkMode, onclick)
-}   
+
+    if (JSON.parse(darkMode) == true) {
+        element.classList.remove("darkMode");
+        localStorage.setItem("darkMode", JSON.stringify(false));
+    } 
+    else if (JSON.parse(darkMode) == false) {
+        element.classList.add("darkMode");
+        localStorage.setItem("darkMode", JSON.stringify(true));
+    }
+}  
