@@ -8,15 +8,16 @@
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>   
-
+    <button onclick="darkMode()">Toggle dark mode</button>
     <h1>Courses</h1>
         <div id="formBar">
             <form>Search Courses by Title <input type="text" id ="course-form"></form>  
         </div>
 
-        <div id ="courses"></div>
-
+        <div id="wrapper">
+            <div id="courses"></div>
     </div>
+
 
  
     <script src="database.js"></script>

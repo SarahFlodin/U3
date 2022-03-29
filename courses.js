@@ -5,11 +5,10 @@ function viewCourse(id) {
     //Skapar en funktion för att skapa en div med en classen container
     let div = document.createElement("div");
     let courses = DATABASE.courses[id];
-    div.classList = "courses";
     //innehåller kursens namn och deras totala credits. Samt titel för infon courses + en div
     div.innerHTML = 
-    `<header>${courses.title} (Total Credits: ${courses.totalCredits})</header>
-    <div>
+    `<div class = "box">
+        <header>${courses.title} (Total Credits: ${courses.totalCredits})</header>
         <div id = "courses">
             <h3>Course responsible:</h3>
             <div id="coursesResponsible">
@@ -44,9 +43,9 @@ function viewResponsible(courses){
     let teacherBox = [];
     for (let i = 0; i < DATABASE.teachers.length; i++) {
         let div = document.createElement("div");
-        if (DATABASE.teachers[i].teacherId == courses.coureseResponsible){
+        if (DATABASE.teachers[i].teacherId == courses.courseResponsible){
             let text = div.innerHTML =
-            `<h2>${DATABASE.teachers[i].firstName} ${DATABASE.teachers[i].lastName} (${DATABASE.teachers[i].post}) </h2>`
+            `<h2 class= border>${DATABASE.teachers[i].firstName} ${DATABASE.teachers[i].lastName} (${DATABASE.teachers[i].post}) </h2>`
             teacherBox.push(text);
         }
     }
@@ -60,15 +59,15 @@ function viewTeachers(courses) {
 
         if (DATABASE.teachers[i].teacherId == courses.teachers[0]) {
             let text = div.innerHTML = `
-            <h4>${DATABASE.teachers[i].firstName} ${DATABASE.teachers[i].lastName} </h4>`
+            <h3 class= border>${DATABASE.teachers[i].firstName} ${DATABASE.teachers[i].lastName} (${DATABASE.teachers[i].post}) </h3>`
             teacherBox.push(text);
         } else if (DATABASE.teachers[i].teacherId == courses.teachers[1]) {
             let text = div.innerHTML = `
-            <h4>${DATABASE.teachers[i].firstName} ${DATABASE.teachers[i].lastName} </h4>`
+            <h3 class= border>${DATABASE.teachers[i].firstName} ${DATABASE.teachers[i].lastName} (${DATABASE.teachers[i].post}) </h3>`
             teacherBox.push(text);
         } else if (DATABASE.teachers[i].teacherId == courses.teachers[2]) {
             let text = div.innerHTML = `
-            <h4>${DATABASE.teachers[i].firstName} ${DATABASE.teachers[i].lastName} </h4>`
+            <h3 class= border>${DATABASE.teachers[i].firstName} ${DATABASE.teachers[i].lastName} (${DATABASE.teachers[i].post}) </h3>`
             teacherBox.push(text);
         }
     }
@@ -87,7 +86,8 @@ function viewStudents(courses) {
                 ${DATABASE.students[i].lastName}
 
                 (${DATABASE.students[i].courses[x].passedCredits}credits)
-                
+                </h5>
+                <h5>
                 ${DATABASE.students[i].courses[x].started.semester}
                 ${DATABASE.students[i].courses[x].started.year}
                 </h5>
@@ -100,7 +100,8 @@ function viewStudents(courses) {
                     ${DATABASE.students[i].lastName}
 
                     (${DATABASE.students[i].courses[x].passedCredits}credits)
-                    
+                    </h5>
+                    <h5>
                     ${DATABASE.students[i].courses[x].started.semester}
                     ${DATABASE.students[i].courses[x].started.year}
                     </h5>
@@ -144,3 +145,37 @@ function submit () {
  input.addEventListener("submit", submit);
 
  viewCourses(DATABASE.courses);
+
+
+function checkDarkMode () {
+    const darkMode = localStorage.getItem("darkMode");
+    if (darkMode == null) {
+    localStorage.setItem("darkMode", JSON.stringify(false));
+ }
+    let element = document.body;
+
+    if (JSON.parse(darkMode)== true) {
+        element.classList.add("darkMode")
+    } else {
+        element.classList.remove("darkMode");
+    }
+}
+
+function darkMode() {
+    let element = document.body;
+    const darkMode = localStorage.getItem("darkMode")
+    element.classList.toggle("darkMode");
+
+    if (JSON.parse(darkMode) == true) {
+        element.classList.remove("darkMode");
+        localStorage.setItem("darkMode", JSON.stringify(false));
+    } 
+    else if (JSON.parse(darkMode) == false) {
+        element.classList.add("darkMode");
+        localStorage.setItem("darkMode", JSON.stringify(true));
+    }
+}  
+
+window.onload = (event) => {
+    checkDarkMode();
+  };

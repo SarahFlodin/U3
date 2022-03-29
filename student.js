@@ -9,8 +9,9 @@ function viewStudent(id) {
     div.classList = "container";
     //innehåller students förnamn, efternamn och deras totala credits. Samt titel för infon courses + en div
     div.innerHTML = `
+    <div class= "box">
     <header>${student.firstName} ${student.lastName} (Total Credits: ${totalCredits(student)})</header>
-    <div>
+    
         <div id = "course">
             <h4>Courses:</h4>
             <div id="courses">
@@ -113,7 +114,7 @@ function checkDarkMode () {
     if (darkMode == null) {
     localStorage.setItem("darkMode", JSON.stringify(false));
  }
-    var element = document.body;
+    let element = document.body;
 
     if (JSON.parse(darkMode)== true) {
         element.classList.add("darkMode")
@@ -123,7 +124,7 @@ function checkDarkMode () {
 }
 
 function darkMode() {
-    var element = document.body;
+    let element = document.body;
     const darkMode = localStorage.getItem("darkMode")
     element.classList.toggle("darkMode");
 
@@ -136,3 +137,7 @@ function darkMode() {
         localStorage.setItem("darkMode", JSON.stringify(true));
     }
 }  
+
+window.onload = (event) => {
+    checkDarkMode();
+  };
