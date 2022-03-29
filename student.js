@@ -113,7 +113,7 @@ function checkDarkMode () {
     if (darkMode == null) {
     localStorage.setItem("darkMode", JSON.stringify(false));
  }
-    let element = document.body;
+    var element = document.body;
 
     if (JSON.parse(darkMode)== true) {
         element.classList.add("darkMode")
@@ -123,7 +123,7 @@ function checkDarkMode () {
 }
 
 function darkMode() {
-    let element = document.body;
+    var element = document.body;
     const darkMode = localStorage.getItem("darkMode")
     element.classList.toggle("darkMode");
 
