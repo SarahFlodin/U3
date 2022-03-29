@@ -59,15 +59,15 @@ function viewTeachers(courses) {
         let div = document.createElement("div");
 
         if (DATABASE.teachers[i].teacherId == courses.teachers[0]) {
-            let text = div.innerHTML `
+            let text = div.innerHTML = `
             <h4>${DATABASE.teachers[i].firstName} ${DATABASE.teachers[i].lastName} </h4>`
             teacherBox.push(text);
         } else if (DATABASE.teachers[i].teacherId == courses.teachers[1]) {
-            let text = div.innerHTML `
+            let text = div.innerHTML = `
             <h4>${DATABASE.teachers[i].firstName} ${DATABASE.teachers[i].lastName} </h4>`
             teacherBox.push(text);
         } else if (DATABASE.teachers[i].teacherId == courses.teachers[2]) {
-            let text = div.innerHTML `
+            let text = div.innerHTML = `
             <h4>${DATABASE.teachers[i].firstName} ${DATABASE.teachers[i].lastName} </h4>`
             teacherBox.push(text);
         }
