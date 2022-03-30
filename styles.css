@@ -118,6 +118,7 @@ h5{
     margin: 0px;
     font-size: 8pt;
 }
+
 h2{
     background-color: aquamarine;
 }
@@ -126,6 +127,19 @@ h6{
     background-color: rgb(219, 180, 255);
     font-size: 9pt;
 }
+
 h4{
     font-size: 12pt;
+}
+
+#button {
+    background-color: red;
+    color: white;
+    border-radius: 15px;
+}
+
+button{
+    background-color: black;
+    color: white;
+    border-radius: 15px;
 }

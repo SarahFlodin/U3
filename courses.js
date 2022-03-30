@@ -1,11 +1,11 @@
 "use strict"
 let courses = DATABASE.courses;
-
+// Skapar en funktion för att i vår box ska det synas kurser, lärare och responsible samt resp divar till dem.
 function viewCourse(id) {
-    //Skapar en funktion för att skapa en div med en classen container
+
     let div = document.createElement("div");
     let courses = DATABASE.courses[id];
-    //innehåller kursens namn och deras totala credits. Samt titel för infon courses + en div
+    
     div.innerHTML = 
     `<div class = "box">
         <header>${courses.title} (Total Credits: ${courses.totalCredits})</header>
@@ -27,10 +27,10 @@ function viewCourse(id) {
         </div>
     </div>`
 
-    //returnerar den nya diven
+
     return div;
 }
-
+// Skapar en fuktion som gör att vi hämtar kurser
 function viewCourses (courses) {
     let coursesElement = document.getElementById("courses");
         for (let course of courses) {
@@ -38,7 +38,7 @@ function viewCourses (courses) {
             coursesElement.appendChild(courseElement)
         }
 }
-
+// Skapar en funktion som hämtar resposible för resp kurs
 function viewResponsible(courses){
     let teacherBox = [];
     for (let i = 0; i < DATABASE.teachers.length; i++) {
@@ -51,7 +51,7 @@ function viewResponsible(courses){
     }
     return teacherBox.toString().split(",").join("");
 }
-
+// Skapar en fuktion som hämtar lärarna för resp kurs
 function viewTeachers(courses) {
     let teacherBox = [];
     for (let i = 0; i < DATABASE.teachers.length; i++) {
@@ -73,7 +73,7 @@ function viewTeachers(courses) {
     }
     return teacherBox.toString().split(",").join("");
 }
-
+// Skapar en fuktion som hämtar studenterna för resp kurs och deras information
 function viewStudents(courses) {
     let studentBox = [];
     for (let i = 0; i < DATABASE.students.length; i++) {
@@ -112,41 +112,30 @@ function viewStudents(courses) {
         }
         return studentBox.toString().split(",").join("");
     }
-
-    function searchCourse () {
+// Skapar en funktion som kallar på sökning av kursen 
+function searchCourse () {
         return input.value.toLowerCase();
-    }
+}
 
     let input = document.getElementById("course-form");
         input.addEventListener("keyup", courseSearch);
-
-    function courseSearch () {
-        let coursesArray = []
-        for (let i = 0; i < courses.length; i++) {
-            document.getElementById("courses").innerHTML = ""
-            if ("" == searchCourse()){
-                document.getElementById("courses").innerHTML = ""
-            } else if (courses[i].title.toLowerCase().includes(searchCourse())){
-                coursesArray.push(courses[i]);
-            }
-        }
-        viewCourses(coursesArray)
-}
-
-function submit () {
+// Skapar en sökfunktion så vi kan söka på kursers titel
+function courseSearch () {
     let coursesArray = []
     for (let i = 0; i < courses.length; i++) {
-        if (courses[i].courses.toLowerCase().includes(searchCourse)) {
-            coursesArray.push(sourses[i]);
+        document.getElementById("courses").innerHTML = ""
+        if ("" == searchCourse()){
+            document.getElementById("courses").innerHTML = ""
+        } else if (courses[i].title.toLowerCase().includes(searchCourse())){
+            coursesArray.push(courses[i]);
         }
     }
     viewCourses(coursesArray)
 }
- input.addEventListener("submit", submit);
 
  viewCourses(DATABASE.courses);
 
-
+// Skapar en funktion som kollar om vi har något booleanskt värde att hämta från local-storage
 function checkDarkMode () {
     const darkMode = localStorage.getItem("darkMode");
     if (darkMode == null) {
@@ -160,7 +149,7 @@ function checkDarkMode () {
         element.classList.remove("darkMode");
     }
 }
-
+// Skapar en funktion som sparar ett booleanskt värde till local-storage
 function darkMode() {
     let element = document.body;
     const darkMode = localStorage.getItem("darkMode")
@@ -175,11 +164,11 @@ function darkMode() {
         localStorage.setItem("darkMode", JSON.stringify(true));
     }
 }  
-
+// Varje gång sidan laddas om så kollar den om darkMode är true/false
 window.onload = (event) => {
     checkDarkMode();
   };
-
+// Roligt klickevent 
 function clickedLava(){
     alert("Website is Lava");
     document.body.style.backgroundImage = ("url('lava.jpg')");

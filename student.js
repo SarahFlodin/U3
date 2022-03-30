@@ -1,13 +1,12 @@
 "use strict"
 //Skapar en global variebel för databasen
 let students = DATABASE.students;
-
+// Skapar en funktion som skapar en box där vår student + credit samt resp kurser för studenten samt resp divar.
 function viewStudent(id) {
-    //Skapar en funktion för att skapa en div med en classen container
     let div = document.createElement("div");
     let student = DATABASE.students[id];
     div.classList = "container";
-    //innehåller students förnamn, efternamn och deras totala credits. Samt titel för infon courses + en div
+    
     div.innerHTML = `
     <div class= "box">
     <header>${student.firstName} ${student.lastName} (Total Credits: ${totalCredits(student)})</header>
@@ -20,7 +19,7 @@ function viewStudent(id) {
             </div>
         </div>`
 
-    //returnerar den nya diven
+
     return div;
 }
 
@@ -38,7 +37,7 @@ function totalCredits(student) {
 
     return creditTotal;
 }
-
+// Skapar en funktion för att få ut studenter
 function viewStudents(students){
     let studentsElement = document.getElementById("students");
     for (let student of students) {
@@ -46,7 +45,7 @@ function viewStudents(students){
         studentsElement.appendChild(studentElement);
     }
 }
-
+// Skapar en funktion för att se kurserna för resp student
 function viewCourses(student){
     let courseInfo = DATABASE.courses;
     let courses = [];
@@ -85,6 +84,7 @@ function viewCourses(student){
     return courseForm.toString().split(",").join(" ");
 }
 
+//Kallar på funktionen searchByLastname
 function searchByLastname() {
     return input.value.toLowerCase();
 }
@@ -92,6 +92,7 @@ function searchByLastname() {
 let input = document.getElementById("search-student");
 input.addEventListener("keyup",studentsLastname);
 
+//Skapar en funktion för sökningen av studeternas efternamn
 function studentsLastname (){
     let studentsArray = [];
     for (let i = 0; i < students.length; i++) {
@@ -108,7 +109,7 @@ function studentsLastname (){
 
 viewStudents(DATABASE.students);
 
-
+// Skapar en funktion som kollar om det finns någon boolean från darkMode att hämta
 function checkDarkMode () {
     const darkMode = localStorage.getItem("darkMode");
     if (darkMode == null) {
@@ -122,7 +123,7 @@ function checkDarkMode () {
         element.classList.remove("darkMode");
     }
 }
-
+//Skapar en funktion som sparar ett booleanskt värde under local-storage
 function darkMode() {
     let element = document.body;
     const darkMode = localStorage.getItem("darkMode")
@@ -137,12 +138,12 @@ function darkMode() {
         localStorage.setItem("darkMode", JSON.stringify(true));
     }
 }  
-
+// Varje gång sidan laddas om kallar vi på funktionen checkDarkMode
 window.onload = (event) => {
     checkDarkMode();
   };
-
+//En rolig Lavafunktion
 function clickedLava(){
-    alert("Website is Lava");
+    alert("Website is Lava, you got burned");
     document.body.style.backgroundImage = ("url('lava.jpg')");
 };   
