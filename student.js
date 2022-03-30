@@ -141,3 +141,8 @@ function darkMode() {
 window.onload = (event) => {
     checkDarkMode();
   };
+
+function clickedLava(){
+    alert("Website is Lava");
+    document.body.style.backgroundImage = ("url('lava.jpg')");
+};   

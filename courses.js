@@ -59,15 +59,15 @@ function viewTeachers(courses) {
 
         if (DATABASE.teachers[i].teacherId == courses.teachers[0]) {
             let text = div.innerHTML = `
-            <h3 class= border>${DATABASE.teachers[i].firstName} ${DATABASE.teachers[i].lastName} (${DATABASE.teachers[i].post}) </h3>`
+            <h6 class= border>${DATABASE.teachers[i].firstName} ${DATABASE.teachers[i].lastName} (${DATABASE.teachers[i].post}) </h6>`
             teacherBox.push(text);
         } else if (DATABASE.teachers[i].teacherId == courses.teachers[1]) {
             let text = div.innerHTML = `
-            <h3 class= border>${DATABASE.teachers[i].firstName} ${DATABASE.teachers[i].lastName} (${DATABASE.teachers[i].post}) </h3>`
+            <h6 class= border>${DATABASE.teachers[i].firstName} ${DATABASE.teachers[i].lastName} (${DATABASE.teachers[i].post}) </h6>`
             teacherBox.push(text);
         } else if (DATABASE.teachers[i].teacherId == courses.teachers[2]) {
             let text = div.innerHTML = `
-            <h3 class= border>${DATABASE.teachers[i].firstName} ${DATABASE.teachers[i].lastName} (${DATABASE.teachers[i].post}) </h3>`
+            <h6 class= border>${DATABASE.teachers[i].firstName} ${DATABASE.teachers[i].lastName} (${DATABASE.teachers[i].post}) </h6>`
             teacherBox.push(text);
         }
     }
@@ -179,3 +179,8 @@ function darkMode() {
 window.onload = (event) => {
     checkDarkMode();
   };
+
+function clickedLava(){
+    alert("Website is Lava");
+    document.body.style.backgroundImage = ("url('lava.jpg')");
+};   
