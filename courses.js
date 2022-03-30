@@ -170,6 +170,6 @@ window.onload = (event) => {
   };
 // Roligt klickevent 
 function clickedLava(){
-    alert("Website is Lava");
+    alert("Website is Lava, you got burned");
     document.body.style.backgroundImage = ("url('lava.jpg')");
-};   
+};    
